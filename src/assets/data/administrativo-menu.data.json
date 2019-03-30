@@ -1,0 +1,338 @@
+{
+    "areas": [
+        {
+            "titulo": "Áreas",
+            "link": "0",
+            "itens": [
+                {
+                    "titulo": "Vendas Nivel 1",
+                    "link": "0",
+                    "itens": [
+                        {
+                            "titulo": "Cadastros Nivel 2",
+                            "link": "0",
+                            "itens": [
+                                {
+                                    "titulo": "Região Comercial Nivel 3",
+                                    "link": "0-0",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "ATV - Bloqueio/Desbloqueio  Nivel 3",
+                                    "link": "0-1",
+                                    "itens": [
+                                        {
+                                            "titulo": "Preço Anual Nivel 4",
+                                            "link": "0-1-1",
+                                            "itens": [
+                                                {
+                                                    "titulo": "Item Nivel 5",
+                                                    "link": "0-0",
+                                                    "itens": null
+                                                },
+                                                {
+                                                    "titulo": "Item Nivel 5",
+                                                    "link": "0-1",
+                                                    "itens": null
+                                                },
+                                                {
+                                                    "titulo": "Item Nivel 5",
+                                                    "link": "0-2",
+                                                    "itens": null
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "titulo": "Preço Reposição  Nivel 4",
+                                            "link": "0-1-2",
+                                            "itens": null
+                                        },
+                                        {
+                                            "titulo": "Orçamento por Cultura  Nivel 4",
+                                            "link": "0-1-2",
+                                            "itens": null
+                                        }
+                                    ]
+                                },
+                                {
+                                    "titulo": "Força de Vendas  Nivel 3",
+                                    "link": "0-2",
+                                    "itens": null
+                                }
+                            ]
+                        },
+                        {
+                            "titulo": "Orçamentos  Nivel 2",
+                            "link": "1",
+                            "itens": [
+                                {
+                                    "titulo": "Preço Anual  Nivel 3",
+                                    "link": "0-0",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Preço Reposição  Nivel 3",
+                                    "link": "0-1",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Orçamento por Cultura  Nivel 3",
+                                    "link": "0-2",
+                                    "itens": null
+                                }
+                            ]
+                        },
+                        {
+                            "titulo": "Faturamento  Nivel 2",
+                            "link": "2",
+                            "itens": [
+                                {
+                                    "titulo": "Alteração Proposta  Nivel 3",
+                                    "link": "2-0",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Pedidos  Nivel 3",
+                                    "link": "2-1",
+                                    "itens": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "titulo": "Faturamentos",
+                    "link": "0",
+                    "itens": [
+                        {
+                            "titulo": "Cadastros",
+                            "link": "0",
+                            "itens": [
+                                {
+                                    "titulo": "Parãmetro de Frete",
+                                    "link": "0-0",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Rota de Frete",
+                                    "link": "0-1",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Preço de Frete",
+                                    "link": "0-2",
+                                    "itens": null
+                                }
+                            ]
+                        },
+                        {
+                            "titulo": "Solicitação",
+                            "link": "1",
+                            "itens": [
+                                {
+                                    "titulo": "Fechamento Solicitação",
+                                    "link": "0-0",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Alteração de Solicitação",
+                                    "link": "0-1",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Outras Solicitações - Matrix",
+                                    "link": "0-2",
+                                    "itens": null
+                                }
+                            ]
+                        },
+                        {
+                            "titulo": "Cancelamento de NF Saída",
+                            "link": "2",
+                            "itens": [
+                                {
+                                    "titulo": "Solicitar Cancelamento",
+                                    "link": "2-0",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Alterar Cancelamento",
+                                    "link": "2-1",
+                                    "itens": null
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "processos": [
+        {
+            "titulo": "Processos",
+            "link": "0",
+            "itens": [
+                {
+                    "titulo": "Processo de Vendas Nivel 1",
+                    "link": "0",
+                    "itens": [
+                        {
+                            "titulo": "Processo A Nivel 2",
+                            "link": "0",
+                            "itens": [
+                                {
+                                    "titulo": "Processo A1 Nivel 3",
+                                    "link": "0-0",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Processo A2 Nivel 3",
+                                    "link": "0-1",
+                                    "itens": [
+                                        {
+                                            "titulo": "Processo A2 1 Nivel 4",
+                                            "link": "0-1-1",
+                                            "itens": [
+                                                {
+                                                    "titulo": "Processo A2 2 Nivel 5",
+                                                    "link": "0-0",
+                                                    "itens": null
+                                                },
+                                                {
+                                                    "titulo": "Processo A2 3 Nivel 5",
+                                                    "link": "0-1",
+                                                    "itens": null
+                                                },
+                                                {
+                                                    "titulo": "Processo A2 4 Nivel 5",
+                                                    "link": "0-2",
+                                                    "itens": null
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "titulo": "Processo A2 2 Nivel 4",
+                                            "link": "0-1-2",
+                                            "itens": null
+                                        },
+                                        {
+                                            "titulo": "Processo A2 3 Nivel 4",
+                                            "link": "0-1-2",
+                                            "itens": null
+                                        }
+                                    ]
+                                },
+                                {
+                                    "titulo": "Processo A3 Nivel 3",
+                                    "link": "0-2",
+                                    "itens": null
+                                }
+                            ]
+                        },
+                        {
+                            "titulo": "Processo B Nivel 2",
+                            "link": "1",
+                            "itens": [
+                                {
+                                    "titulo": "Processo B1 Nivel 3",
+                                    "link": "0-0",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Processo B2 Nivel 3",
+                                    "link": "0-1",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Processo B3 Nivel 3",
+                                    "link": "0-2",
+                                    "itens": null
+                                }
+                            ]
+                        },
+                        {
+                            "titulo": "Processo C Nivel 2",
+                            "link": "2",
+                            "itens": [
+                                {
+                                    "titulo": "Processo C1 Nivel 3",
+                                    "link": "2-0",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Processo C2 Nivel 3",
+                                    "link": "2-1",
+                                    "itens": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "titulo": "Processo de Faturamento Nivel 1",
+                    "link": "0",
+                    "itens": [
+                        {
+                            "titulo": "Processo D Nivel 2",
+                            "link": "0",
+                            "itens": [
+                                {
+                                    "titulo": "Processo D1 Nivel 3",
+                                    "link": "0-0",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Processo D2 Nivel 3",
+                                    "link": "0-1",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Processo D3 Nivel 3",
+                                    "link": "0-2",
+                                    "itens": null
+                                }
+                            ]
+                        },
+                        {
+                            "titulo": "Processo E Nivel 2",
+                            "link": "1",
+                            "itens": [
+                                {
+                                    "titulo": "Processo E1 Nivel 3",
+                                    "link": "0-0",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Processo E2 Nivel 3",
+                                    "link": "0-1",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Processo E3 Nivel 3",
+                                    "link": "0-2",
+                                    "itens": null
+                                }
+                            ]
+                        },
+                        {
+                            "titulo": "Processo F Nivel 2",
+                            "link": "2",
+                            "itens": [
+                                {
+                                    "titulo": "Processo F1 Nivel 3",
+                                    "link": "2-0",
+                                    "itens": null
+                                },
+                                {
+                                    "titulo": "Processo F2 Nivel 3",
+                                    "link": "2-1",
+                                    "itens": null
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

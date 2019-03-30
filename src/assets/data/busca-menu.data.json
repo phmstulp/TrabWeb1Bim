@@ -1,0 +1,119 @@
+[
+    {
+        "page": "Dashboard",
+        "icon": "../../../assets/icon/ic_dashboard_grey_24px.svg",
+        "icon2": "menu-dashboard",
+        "link": [
+            "./"
+        ],
+        "value": "dashboard"
+    },
+    {
+        "page": "Favoritos",
+        "icon": "../../../assets/icon/ic_star_border_grey_24px.svg",
+        "icon2": "menu-favorite",
+        "link": [
+            "./favoritos"
+        ],
+        "value": "favoritos"
+    },
+    {
+        "page": "Administrativo",
+        "icon": "../../../assets/icon/ic_description_grey_24px.svg",
+        "icon2": "menu-description",
+        "link": [
+            "./"
+        ],
+        "value": "administracao"
+    },
+    {
+        "page": "Industrial",
+        "icon": "../../../assets/icon/ic_factory_grey_24px.svg",
+        "icon2": "menu-factory",
+        "link": [
+            "./"
+        ],
+        "value": "industrial"
+    },
+    {
+        "page": "Contábil",
+        "icon": "../../../assets/icon/ic_monetization_on_grey_24px.svg",
+        "icon2": "menu-money",
+        "link": [
+            "./"
+        ],
+        "value": "contabil"
+    },
+    {
+        "page": "Tecnologia",
+        "icon": "../../../assets/icon/ic_computer_grey_24px.svg",
+        "icon2": "menu-computer",
+        "link": [
+            "./"
+        ],
+        "value": "tecnologia"
+    },
+    {
+        "page": "Laudo Técnico",
+        "icon": "../../../assets/icon/ic_content_paste_grey_24px.svg",
+        "icon2": "menu-paste",
+        "link": [
+            "./"
+        ],
+        "value": "laudoTecnico"
+    },
+    {
+        "page": "Filiais",
+        "icon": "../../../assets/icon/ic_domain_grey_24px.svg",
+        "icon2": "menu-domain",
+        "link": [
+            "./"
+        ],
+        "value": "filiais"
+    },
+    {
+        "page": "Pedidos de Vendas",
+        "icon": "../../../assets/icon/ic_work_grey_24px.svg",
+        "icon2": "menu-work",
+        "link": [
+            "./"
+        ],
+        "value": "pedidosVenda"
+    },
+    {
+        "page": "Processo1",
+        "icon": "../../../assets/icon/ic_settings_grey_24px.svg",
+        "icon2": "menu-settings",
+        "link": [
+            "./"
+        ],
+        "value": "processo 1"
+    },
+    {
+        "page": "Processo2",
+        "icon": "../../../assets/icon/ic_settings_grey_24px.svg",
+        "icon2": "menu-settings",
+        "link": [
+            "./"
+        ],
+        "value": "processo 2"
+    },
+    {
+        "page": "Processo3",
+        "icon": "../../../assets/icon/ic_settings_grey_24px.svg",
+        "icon2": "menu-settings",
+        "link": [
+            "./"
+        ],
+        "value": "processo 3"
+    },
+    {
+        "page": "Guideline",
+        "icon": "../../../assets/icon/ic_format_color_fill_grey_24px.svg",
+        "icon2": "menu-theme",
+        "link": [
+            "../guideline"
+        ],
+        "value": "guideline"
+    }
+]

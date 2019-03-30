@@ -1,8 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 /* All */
 
 body {
@@ -250,7 +245,7 @@ body {
   .fab-menu-group .fab-menu, .fab-menu-group .fab-menu .fab-toggle {
     width: 26px !important;
     height: 26px !important;
-    background-image: url("assets/icon/ic_add_white_24px.svg");
+    background-image: url("../icon/ic_add_white_24px.svg");
     background-position: center;
     background-repeat: no-repeat;
   }
@@ -262,7 +257,7 @@ body {
   .fab-menu-group .fab-menu.active .fab-toggle {
     background-color: white;
     border: 1px solid #8c8c8c;
-    background-image: url("assets/icon/ic_close_grey_24px.svg");
+    background-image: url("../icon/ic_close_grey_24px.svg");
     background-size: 18px;
   }
   
@@ -282,7 +277,7 @@ body {
   }
   
   .fab-menu-group .fab-menu .message .fab-item {
-    background-image: url("assets/icon/ic_textsms_white_18px.svg");
+    background-image: url("../icon/ic_textsms_white_18px.svg");
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -359,7 +354,7 @@ body {
   
   .breadcrumb > div {
     display: inline-block;
-    background: url("assets/icon/ic_keyboard_arrow_right_grey_18px.svg") no-repeat;
+    background: url("../../assets/icon/ic_keyboard_arrow_right_grey_18px.svg") no-repeat;
     padding-left: 25px;
     background-size: 16px;
     margin-left: 10px;
@@ -673,7 +668,7 @@ body {
   
   /* Content - Favorite */
   .favorite {
-    background-image: url(assets/icon/ic_star_border_grey_24px.svg);
+    background-image: url(../../assets/icon/ic_star_border_grey_24px.svg);
     background-repeat: no-repeat;
     width: 30px;
     height: 30px;
@@ -684,7 +679,7 @@ body {
   }
   
   .favorite.mat-button-toggle-checked {
-    background-image: url(assets/icon/ic_star_grey_24px.svg);
+    background-image: url(../../assets/icon/ic_star_grey_24px.svg);
     background-color: transparent;
   }
   
@@ -717,14 +712,14 @@ body {
   .ns .ns-item {
     background-color: #c6d5d7;
     text-align: center;
-    background-image: url(assets/img/bkg-tab.svg);
+    background-image: url(../img/bkg-tab.svg);
     background-repeat: no-repeat;
     background-position: right center;
     max-height: 32px;
   }
   
   .ns .ns-item.last {
-    background-image: url(assets/img/bkg-tab-last.svg);
+    background-image: url(../img/bkg-tab-last.svg);
   }
   
   .ns button {
@@ -749,13 +744,13 @@ body {
   
   .ns .mat-fab.ok {
     background-color: #009789;
-    background-image: url('assets/icon/ic_check_white_24px.svg');
+    background-image: url('../../assets/icon/ic_check_white_24px.svg');
     box-shadow: none !important;
   }
   
   .ns .mat-fab.edit {
     background-color: #ff9900;
-    background-image: url('assets/icon/ic_mode_edit_white_24px.svg');
+    background-image: url('../../assets/icon/ic_mode_edit_white_24px.svg');
     background-size: 72%;
     box-shadow: none !important;
   }
