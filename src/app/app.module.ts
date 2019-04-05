@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CalculafreteComponent } from './cadastros/calculafrete/calculafrete.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CalculafreteComponent
   ],
   imports: [
     BrowserModule,
