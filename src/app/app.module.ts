@@ -11,11 +11,13 @@ import { MatInputModule, MatRadioModule, MatButtonModule,
    MatSort, MatSortModule } from '@angular/material';
 import { HttpClientModule, HttpClient } from '../../node_modules/@angular/common/http';
 import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
+import { CalculafreteComponent } from './cadastros/calculafrete/calculafrete.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CalculafreteComponent
   ],
   imports: [
     BrowserModule,
