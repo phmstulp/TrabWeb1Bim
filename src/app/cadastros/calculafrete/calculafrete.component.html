@@ -27,7 +27,37 @@
             </mat-form-field>
           </div>      
         </div>
-
+        
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <mat-table [dataSource]="dsEstado" matSort (matSortChange)="sortData($event)" class="mat-elevation-z8">
+              <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        
+              <!-- ID -->
+              <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>>
+                <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+              </ng-container>
+        
+              <!-- Sigla -->
+              <ng-container matColumnDef="sigla">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Sigla </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.sigla}} </mat-cell>
+              </ng-container>
+        
+              <!-- Nome -->
+              <ng-container matColumnDef="nome">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Descrição </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
+              </ng-container>
+        
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButton></mat-paginator>
+          </div>
+        </div>
       </mat-expansion-panel>
     </mat-accordion>
   </div>

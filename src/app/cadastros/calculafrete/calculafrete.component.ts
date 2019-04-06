@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Estado } from './models/estado';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '../../../../node_modules/@angular/material/paginator';
+import { MatSort } from '../../../../node_modules/@angular/material/sort';
 
 @Component({
   selector: 'app-calculafrete',
@@ -10,16 +13,27 @@ export class CalculafreteComponent implements OnInit {
 
   public estado: Estado;
   public isExpandido: number;
+  public estadoList: Array<Estado>;
+  public dsEstado: any;
 
+  displayedColumns: string[] = ['id', 'sigla', 'nome'];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   constructor() { }
 
   ngOnInit() {
     this.estado = new Estado;
+    this.estadoList = new Array<Estado>();
     this.isExpandido = 0;
   }
 
   setExpandido() {
     this.isExpandido = 1;
+  }
+
+  sortData(){
+    this.dsEstado.sort = this.sort;
   }
 
 }
