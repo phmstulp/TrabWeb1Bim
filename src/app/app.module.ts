@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatInputModule, MatRadioModule, MatButtonModule, 
   MatTableModule, MatIconModule, MatIconRegistry, MatPaginatorModule,
-   MatSort, MatSortModule } from '@angular/material';
+   MatSort, MatSortModule, MatExpansionModule, MatSelectModule } from '@angular/material';
 import { HttpClientModule, HttpClient } from '../../node_modules/@angular/common/http';
 import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
 import { CalculafreteComponent } from './cadastros/calculafrete/calculafrete.component';
@@ -32,7 +32,9 @@ import { CalculafreteComponent } from './cadastros/calculafrete/calculafrete.com
     MatIconModule,
     HttpClientModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatExpansionModule,
+    MatSelectModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
