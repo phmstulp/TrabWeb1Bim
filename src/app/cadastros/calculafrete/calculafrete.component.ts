@@ -22,4 +22,17 @@ export class CalculafreteComponent implements OnInit {
     this.isExpandido = 1;
   }
 
+  salvarEstado(){
+    console.log("Estado Salvo")
+    console.log(this.estado);
+    this.estadoList.push(this.estado);
+    console.log("Lista de Estados");
+    console.log(this.estadoList);
+    this.estado = new Estado(); //Instancia uma novo Estado para não perder a referência da primeira0,
+
+    this.dsEstado = new MatTableDataSource<Estado>(this.estado);
+    this.dsEstado.paginator = this.paginator;
+    //this.dataSource.Sort = this.matSort;    
+  }
+
 }
