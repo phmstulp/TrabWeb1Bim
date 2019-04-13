@@ -119,6 +119,36 @@
             <mat-form-field>
               <input matInput placeholder="Nome" type="string" [(ngModel)]="cidade.nome" required>
             </mat-form-field>
+          </div>          
+        </div>
+
+        <div class="row">
+          <div class="col s6 m4 l4">
+            <mat-form-field>
+              <input matInput placeholder="Cep" type="number" [(ngModel)]="cep.cep" required>
+            </mat-form-field>
+          </div>   
+          
+          <div class="col s6 m4 l4">
+            <div class="button-row col s12">               
+              <button mat-fab color="warn" (click)="removeCep()">-</button>
+              <button mat-fab color="green" (click)="addCep()">+</button>
+            </div>
+          </div>            
+        </div>        
+
+        <div class="row heading">
+          <div class="col s12">
+            <h2 class="title">Lista de CEP's</h2>
+            <div class="heading__tools">
+              <div class="search">
+                <mat-form-field>
+                  <mat-icon svgIcon="slidenav-search"></mat-icon>
+                  <input matInput id="pesquisarCep" name="pesquisar" placeholder="Pesquisar"
+                    (keyup)="aplicarFiltroCep($event.target.value)">
+                </mat-form-field>
+              </div>
+            </div>
           </div>
         </div>
 
