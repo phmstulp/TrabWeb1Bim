@@ -16,6 +16,7 @@ export class CalculafreteComponent implements OnInit {
   public valorFrete: ValorFrete;
   public isExpandidoEstado: number;
   public isExpandidoValorFrete: number;
+  public expandidoEstado; expandidoCidade: number;
   public estadoList: Array<Estado>;
   public valorFreteList: Array<ValorFrete>;
   public dsEstado: any;
@@ -23,6 +24,7 @@ export class CalculafreteComponent implements OnInit {
 
   displayedColumnsEstado: string[] = ['actionsColumn', 'id', 'sigla', 'nome'];
   displayedColumnsValorFrete: string[] = ['actionsColumn', 'id', 'estadoOrigem', 'estadoDestino', 'valor'];
+  displayedColumnsCidade: string[] = ['actionsColumn', 'id', 'nome'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
