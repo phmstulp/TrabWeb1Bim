@@ -17,7 +17,7 @@
             <mat-form-field>
               <input matInput placeholder="Sigla" type="string" [(ngModel)]="estado.sigla" required>
             </mat-form-field>
-          </div>       
+          </div>
         </div>
 
         <div class="row">
@@ -25,39 +25,69 @@
             <mat-form-field>
               <input matInput placeholder="Descrição" type="string" [(ngModel)]="estado.nome" required>
             </mat-form-field>
-          </div>      
-        </div>
-
-        <div class="row">
-          <div class="col s12 m12 l12">
-            <button mat-flat-button (click)="salvarEstado()">Salvar Estado</button>
           </div>
         </div>
-        
+
+        <div class="row footer-btn">
+          <div class="button-row col s12">
+            <button mat-raised-button (click)="voltar()">Voltar</button>
+            <button mat-raised-button color="green" (click)="salvarEstado()">Salvar</button>
+            <!--<button *ngIf="edicao" mat-raised-button color="green" (click)="atualizar()">Atualizar</button>-->
+          </div>
+        </div>
+
+        <div class="row heading">
+          <div class="col s12">
+            <h2 class="title">Lista de Estados</h2>
+            <div class="heading__tools">
+              <div class="search">
+                <mat-form-field>
+                  <mat-icon svgIcon="slidenav-search"></mat-icon>
+                  <input matInput id="pesquisarId" name="pesquisar" placeholder="Pesquisar"
+                    (keyup)="aplicarFiltro($event.target.value)">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col s12 m12 l12">
             <mat-table [dataSource]="dsEstado" matSort (matSortChange)="sortData($event)" class="mat-elevation-z8">
               <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
-        
+
+              <ng-container matColumnDef="actionsColumn">
+                <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <button mat-icon-button>
+                    <mat-icon class="link_action" matTooltip="Excluir" (click)="excluirEstado(element.id)">delete
+                    </mat-icon>
+                  </button>
+                  <button mat-icon-button>
+                    <mat-icon class="link_action" matTooltip="Editar" (click)="editarEstado(element.id)">edit</mat-icon>
+                  </button>
+                </mat-cell>
+              </ng-container>
+
               <!-- ID -->
               <ng-container matColumnDef="id">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>>
                 <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
               </ng-container>
-        
+
               <!-- Sigla -->
               <ng-container matColumnDef="sigla">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Sigla </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.sigla}} </mat-cell>
               </ng-container>
-        
+
               <!-- Nome -->
               <ng-container matColumnDef="nome">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Descrição </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
               </ng-container>
-        
+
               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
               <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
             </mat-table>
