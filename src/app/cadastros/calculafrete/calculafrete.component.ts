@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '../../../../node_modules/@angular/material/paginator';
 import { MatSort } from '../../../../node_modules/@angular/material/sort';
 import { ValorFrete } from './models/valorfrete';
+import { Cidade } from './models/cidade';
 
 @Component({
   selector: 'app-calculafrete',
@@ -13,13 +14,20 @@ import { ValorFrete } from './models/valorfrete';
 export class CalculafreteComponent implements OnInit {
 
   public estado: Estado;
-  public expandidoEstado; expandidoCidade: number;
+  public cidade: Cidade;
+  public valorFrete: ValorFrete;
+  public isExpandidoEstado: number;
+  public isExpandidoValorFrete: number;
+  public isExpandidoCidade: number;
   public estadoList: Array<Estado>;
   public valorFreteList: Array<ValorFrete>;
+  public cidadeList: Array<Cidade>;
   public dsEstado: any;
   public dsValorFrete: any;
+  public dsCidade: any;
 
-  displayedColumns: string[] = ['actionsColumn', 'id', 'sigla', 'nome'];
+  displayedColumnsEstado: string[] = ['actionsColumn', 'id', 'sigla', 'nome'];
+  displayedColumnsValorFrete: string[] = ['actionsColumn', 'id', 'estadoOrigem', 'estadoDestino', 'valor'];
   displayedColumnsCidade: string[] = ['actionsColumn', 'id', 'nome'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -30,20 +38,25 @@ export class CalculafreteComponent implements OnInit {
     this.estado = new Estado;
     this.valorFrete = new ValorFrete;
     this.estadoList = new Array<Estado>();
-    this.expandidoEstado = 0;
-    this.carregaEstado();
+    this.valorFreteList = new Array<ValorFrete>();
+    this.cidadeList = new Array<Cidade>();
+    this.cidade = new Cidade;
+    this.isExpandidoEstado = 0;
+    this.isExpandidoValorFrete = 0;
+    this.isExpandidoCidade = 0;
+    //this.carregaEstado();
   }
 
   setExpandidoEstado() {
-    this.expandidoEstado = 1;
-  }
-
-  setExpandidoCidade() {
-    this.expandidoCidade = 1;
+    this.isExpandidoEstado = 1;
   }
 
   setExpandidoValorFrete() {
     this.isExpandidoValorFrete = 1;
+  }
+
+  setExpandidoCidade() {
+    this.isExpandidoCidade = 1;
   }
 
   salvarEstado() {
@@ -57,6 +70,17 @@ export class CalculafreteComponent implements OnInit {
     this.atualizaTableEstado();   
   }
 
+  salvarCidade() {
+    // console.log("Estado Salvo")
+    // console.log(this.estado);
+    this.estadoList.push(this.estado);
+    console.log("Lista de Estados");
+    console.log(this.estadoList);
+    this.estado = new Estado();
+
+    this.atualizaTableEstado();   
+  }  
+
   salvarValorFrete() {
     // console.log("Estado Salvo")
     // console.log(this.estado);
@@ -69,12 +93,12 @@ export class CalculafreteComponent implements OnInit {
   }
 
   carregaEstado() {
-    //this.estado = new Estado;
-    //this.estado.id = Math.floor(Math.random() * 100) + 1;
-    //this.estado.nome = "Jooj";
-    //this.estado.sigla = "JS";
-    //this.estadoList.push(this.estado);
-    //this.dsEstado = new MatTableDataSource<Estado>(this.estadoList);
+    this.estado = new Estado;
+    this.estado.id = Math.floor(Math.random() * 100) + 1;
+    this.estado.nome = "Jooj";
+    this.estado.sigla = "JS";
+    this.estadoList.push(this.estado);
+    this.dsEstado = new MatTableDataSource<Estado>(this.estadoList);
   }
 
   sortDataEstado() {
@@ -108,6 +132,14 @@ export class CalculafreteComponent implements OnInit {
       data.valor.toString().indexOf(filter) != -1;
   
     this.dsValorFrete.filter = valor;
+  }
+
+  aplicarFiltroCidade(valor: string) {
+
+  }
+
+  sortDataCidade(){
+
   }
 
   editarEstado(id: number) {
