@@ -16,7 +16,7 @@ export class CalculafreteComponent implements OnInit {
   public estadoList: Array<Estado>;
   public dsEstado: any;
 
-  displayedColumns: string[] = ['id', 'sigla', 'nome'];
+  displayedColumns: string[] = ['actionsColumn', 'id', 'sigla', 'nome'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -40,9 +40,7 @@ export class CalculafreteComponent implements OnInit {
     console.log(this.estadoList);
     this.estado = new Estado(); //Instancia uma novo Estado para não perder a referência da primeira0,
 
-    this.dsEstado = new MatTableDataSource<Estado>(this.estadoList);
-    this.dsEstado.paginator = this.paginator;
-    //this.dataSource.Sort = this.matSort;    
+    this.atualizaTable();   
   }
 
   carregaEstado(){
@@ -50,6 +48,36 @@ export class CalculafreteComponent implements OnInit {
   }
 
   sortData(){
+    this.dsEstado.sort = this.sort;
+  }
+
+  aplicarFiltro(valor: string){
+    valor = valor.trim();
+    valor = valor.toLowerCase();
+    console.log("Realiza o filtro com " + valor);
+    this.dsEstado.filterPredicate = (data: Estado, filter: string ) => 
+      data.id.toString().indexOf(filter) != -1 ||
+      data.sigla.toLowerCase().indexOf(filter) != -1 ||
+      data.nome.toLowerCase().indexOf(filter) != -1;
+  
+    this.dsEstado.filter = valor;
+  }
+
+  editar() {
+
+  }
+
+  excluir(id: number) {
+    this.estadoList.splice(this.estadoList.findIndex
+      (d => d.id === id), 1);
+    console.log("Lista de Veiculos");
+    console.log(this.estadoList);
+    this.atualizaTable();
+  }
+
+  atualizaTable() {
+    this.dsEstado = new MatTableDataSource<Estado>(this.estadoList);
+    this.dsEstado.paginator = this.paginator;
     this.dsEstado.sort = this.sort;
   }
 
