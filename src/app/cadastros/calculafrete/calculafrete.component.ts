@@ -12,7 +12,7 @@ import { MatSort } from '../../../../node_modules/@angular/material/sort';
 export class CalculafreteComponent implements OnInit {
 
   public estado: Estado;
-  public isExpandido: number;
+  public expandidoEstado; expandidoCidade: number;
   public estadoList: Array<Estado>;
   public dsEstado: any;
 
@@ -25,12 +25,16 @@ export class CalculafreteComponent implements OnInit {
   ngOnInit() {
     this.estado = new Estado;
     this.estadoList = new Array<Estado>();
-    this.isExpandido = 0;
+    this.expandidoEstado = 0;
     this.carregaEstado();
   }
 
-  setExpandido() {
-    this.isExpandido = 1;
+  setExpandidoEstado() {
+    this.expandidoEstado = 1;
+  }
+
+  setExpandidoCidade() {
+    this.expandidoCidade = 1;
   }
 
   salvarEstado(){
