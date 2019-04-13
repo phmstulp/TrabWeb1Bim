@@ -17,6 +17,7 @@ export class CalculafreteComponent implements OnInit {
   public dsEstado: any;
 
   displayedColumns: string[] = ['actionsColumn', 'id', 'sigla', 'nome'];
+  displayedColumnsCidade: string[] = ['actionsColumn', 'id', 'nome'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
