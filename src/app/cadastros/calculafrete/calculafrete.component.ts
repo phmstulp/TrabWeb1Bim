@@ -5,6 +5,7 @@ import { MatPaginator } from '../../../../node_modules/@angular/material/paginat
 import { MatSort } from '../../../../node_modules/@angular/material/sort';
 import { ValorFrete } from './models/valorfrete';
 import { Cidade } from './models/cidade';
+import { Cep } from './models/cep';
 
 @Component({
   selector: 'app-calculafrete',
@@ -16,19 +17,23 @@ export class CalculafreteComponent implements OnInit {
   public estado: Estado;
   public cidade: Cidade;
   public valorFrete: ValorFrete;
+  public cep: Cep;
   public isExpandidoEstado: number;
   public isExpandidoValorFrete: number;
   public isExpandidoCidade: number;
   public estadoList: Array<Estado>;
   public valorFreteList: Array<ValorFrete>;
   public cidadeList: Array<Cidade>;
+  public cepList: Array<Cep>;
   public dsEstado: any;
   public dsValorFrete: any;
   public dsCidade: any;
+  public dsCep: any;
 
   displayedColumnsEstado: string[] = ['actionsColumn', 'id', 'sigla', 'nome'];
   displayedColumnsValorFrete: string[] = ['actionsColumn', 'id', 'estadoOrigem', 'estadoDestino', 'valor'];
   displayedColumnsCidade: string[] = ['actionsColumn', 'id', 'nome'];
+  displayedColumnsCep: string[] = ['actionsColumn', 'id', 'cep'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -41,6 +46,8 @@ export class CalculafreteComponent implements OnInit {
     this.valorFreteList = new Array<ValorFrete>();
     this.cidadeList = new Array<Cidade>();
     this.cidade = new Cidade;
+    this.cepList = new Array<Cep>();
+    this.cep = new Cep;
     this.isExpandidoEstado = 0;
     this.isExpandidoValorFrete = 0;
     this.isExpandidoCidade = 0;
