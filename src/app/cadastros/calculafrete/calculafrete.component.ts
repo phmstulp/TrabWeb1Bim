@@ -26,6 +26,7 @@ export class CalculafreteComponent implements OnInit {
     this.estado = new Estado;
     this.estadoList = new Array<Estado>();
     this.isExpandido = 0;
+    this.carregaEstado();
   }
 
   setExpandido() {
@@ -46,7 +47,12 @@ export class CalculafreteComponent implements OnInit {
   }
 
   carregaEstado(){
-    
+    this.estado = new Estado;
+    this.estado.id = Math.floor(Math.random() * 100) + 1;
+    this.estado.nome = "Jooj";
+    this.estado.sigla = "JS";
+    this.estadoList.push(this.estado);
+    this.dsEstado = new MatTableDataSource<Estado>(this.estadoList);
   }
 
   sortData(){
