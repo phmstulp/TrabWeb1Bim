@@ -25,6 +25,8 @@ export class CalculafreteComponent implements OnInit {
   public dsEstado: any;
   public dsValorFrete: any;
   public dsCidade: any;
+  public edicaoEstado: boolean = false;
+  public edicaoValorFrete: boolean = false;
 
   displayedColumnsEstado: string[] = ['actionsColumn', 'id', 'sigla', 'nome'];
   displayedColumnsValorFrete: string[] = ['actionsColumn', 'id', 'estadoOrigem', 'estadoDestino', 'valor'];
@@ -60,14 +62,21 @@ export class CalculafreteComponent implements OnInit {
   }
 
   salvarEstado() {
-    // console.log("Estado Salvo")
-    // console.log(this.estado);
-    this.estadoList.push(this.estado);
-    console.log("Lista de Estados");
-    console.log(this.estadoList);
-    this.estado = new Estado();
+    if (this.edicaoEstado == false) {
+      // console.log("Estado Salvo")
+      // console.log(this.estado);
+      this.estadoList.push(this.estado);
+      console.log("Lista de Estados");
+      console.log(this.estadoList);
+      this.estado = new Estado();
 
-    this.atualizaTableEstado();   
+      this.atualizaTableEstado();
+    } else {
+      this.estadoList.splice(this.estadoList.findIndex
+        (d => d.id === this.estado.id), 1);
+      this.estadoList.push(this.estado);
+      this.edicaoEstado = false;
+    }
   }
 
   salvarCidade() {
@@ -78,16 +87,23 @@ export class CalculafreteComponent implements OnInit {
     console.log(this.estadoList);
     this.estado = new Estado();
 
-    this.atualizaTableEstado();   
-  }  
+    this.atualizaTableEstado();
+  }
 
   salvarValorFrete() {
-    // console.log("Estado Salvo")
-    // console.log(this.estado);
-    this.valorFreteList.push(this.valorFrete);
-    console.log("Lista de Valor Frete");
-    console.log(this.valorFreteList);
-    this.valorFrete = new ValorFrete();
+    if (this.edicaoValorFrete == false) {
+      // console.log("Estado Salvo")
+      // console.log(this.estado);
+      this.valorFreteList.push(this.valorFrete);
+      console.log("Lista de Valor Frete");
+      console.log(this.valorFreteList);
+      this.valorFrete = new ValorFrete();
+    } else {
+      this.valorFreteList.splice(this.valorFreteList.findIndex
+        (d => d.id === this.valorFrete.id), 1);
+      this.valorFreteList.push(this.valorFrete);
+      this.edicaoValorFrete = false;
+    }
 
     this.atualizaTableValorFrete();
   }
@@ -113,11 +129,11 @@ export class CalculafreteComponent implements OnInit {
     valor = valor.trim();
     valor = valor.toLowerCase();
     console.log("Realiza o filtro com " + valor);
-    this.dsEstado.filterPredicate = (data: Estado, filter: string ) => 
+    this.dsEstado.filterPredicate = (data: Estado, filter: string) =>
       data.id.toString().indexOf(filter) != -1 ||
       data.sigla.toLowerCase().indexOf(filter) != -1 ||
       data.nome.toLowerCase().indexOf(filter) != -1;
-  
+
     this.dsEstado.filter = valor;
   }
 
@@ -125,12 +141,12 @@ export class CalculafreteComponent implements OnInit {
     valor = valor.trim();
     valor = valor.toLowerCase();
     console.log("Realiza o filtro com " + valor);
-    this.dsValorFrete.filterPredicate = (data: ValorFrete, filter: string ) => 
+    this.dsValorFrete.filterPredicate = (data: ValorFrete, filter: string) =>
       data.id.toString().indexOf(filter) != -1 ||
       data.estadoOrigem.toString().toLowerCase().indexOf(filter) != -1 ||
       data.estadoDestino.toString().toLowerCase().indexOf(filter) != -1 ||
       data.valor.toString().indexOf(filter) != -1;
-  
+
     this.dsValorFrete.filter = valor;
   }
 
@@ -138,12 +154,12 @@ export class CalculafreteComponent implements OnInit {
 
   }
 
-  sortDataCidade(){
+  sortDataCidade() {
 
   }
 
   editarEstado(id: number) {
-    alert("Editar ==> " + id);
+    //alert("Editar ==> " + id);
     let estadoUpdate;
     this.estadoList.forEach(item => {
       if (item.id == id) {
@@ -151,10 +167,19 @@ export class CalculafreteComponent implements OnInit {
       }
     });
     this.estado = estadoUpdate;
+    this.edicaoEstado = true;
   }
 
   editarValorFrete(id: number) {
-
+    //alert("Editar ==> " + id);
+    let valorFreteUpdate;
+    this.valorFreteList.forEach(item => {
+      if (item.id == id) {
+        valorFreteUpdate = item;
+      }
+    });
+    this.valorFrete = valorFreteUpdate;
+    this.edicaoValorFrete = true;
   }
 
   excluirEstado(id: number) {
@@ -190,7 +215,7 @@ export class CalculafreteComponent implements OnInit {
   }
 
   atualizarEstadoDestino() {
-    
+
   }
 
 }
