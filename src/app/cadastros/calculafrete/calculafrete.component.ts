@@ -63,11 +63,18 @@ export class CalculafreteComponent implements OnInit {
     this.dsEstado.filter = valor;
   }
 
-  editar() {
-
+  editarEstado(id: number) {
+    alert("Editar ==> " + id);
+    let estadoUpdate;
+    this.estadoList.forEach(item => {
+      if (item.id == id) {
+        estadoUpdate = item;
+      }
+    });
+    this.estado = estadoUpdate;
   }
 
-  excluir(id: number) {
+  excluirEstado(id: number) {
     this.estadoList.splice(this.estadoList.findIndex
       (d => d.id === id), 1);
     console.log("Lista de Veiculos");

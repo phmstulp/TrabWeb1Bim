@@ -61,11 +61,11 @@
                 <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
                 <mat-cell *matCellDef="let element">
                   <button mat-icon-button>
-                    <mat-icon class="link_action" matTooltip="Excluir" (click)="excluir(element.id)">delete
+                    <mat-icon class="link_action" matTooltip="Excluir" (click)="excluirEstado(element.id)">delete
                     </mat-icon>
                   </button>
                   <button mat-icon-button>
-                    <mat-icon class="link_action" matTooltip="Editar" (click)="editar(element.id)">edit</mat-icon>
+                    <mat-icon class="link_action" matTooltip="Editar" (click)="editarEstado(element.id)">edit</mat-icon>
                   </button>
                 </mat-cell>
               </ng-container>
