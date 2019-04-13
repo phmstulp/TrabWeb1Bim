@@ -33,7 +33,7 @@ export class CalculafreteComponent implements OnInit {
   displayedColumnsEstado: string[] = ['actionsColumn', 'id', 'sigla', 'nome'];
   displayedColumnsValorFrete: string[] = ['actionsColumn', 'id', 'estadoOrigem', 'estadoDestino', 'valor'];
   displayedColumnsCidade: string[] = ['actionsColumn', 'id', 'nome'];
-  displayedColumnsCep: string[] = ['actionsColumn', 'id', 'cep'];
+  displayedColumnsCep: string[] = ['actionsColumn', 'cep']; //, 'id'
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -78,14 +78,11 @@ export class CalculafreteComponent implements OnInit {
   }
 
   salvarCidade() {
-    // console.log("Estado Salvo")
-    // console.log(this.estado);
-    this.estadoList.push(this.estado);
-    console.log("Lista de Estados");
-    console.log(this.estadoList);
-    this.estado = new Estado();
+    this.cidade.cepList = this.cepList;
+    this.cidadeList.push(this.cidade);
+    this.cidade = new Cidade();
 
-    this.atualizaTableEstado();   
+    this.atualizaTableCidade();   
   }  
 
   salvarValorFrete() {
@@ -192,6 +189,11 @@ export class CalculafreteComponent implements OnInit {
     this.dsValorFrete.sort = this.sort;
   }
 
+  atualizaTableCidade(){
+    this.dsCidade = new MatTableDataSource<Cidade>(this.cidadeList);
+    this.dsCidade.paginator = this.paginator;
+    this.dsCidade.sort = this.sort;
+  }  
   atualizarEstadoOrigem() {
 
   }
@@ -199,5 +201,17 @@ export class CalculafreteComponent implements OnInit {
   atualizarEstadoDestino() {
     
   }
+
+  addCep(){
+    this.cepList.push(this.cep);
+    this.cep = new Cep();
+    this.atualizaTableCep();    
+  }
+
+  atualizaTableCep() {
+    this.dsCep = new MatTableDataSource<Cep>(this.cepList);
+    this.dsCep.paginator = this.paginator;
+    this.dsCep.sort = this.sort;
+  }  
 
 }
