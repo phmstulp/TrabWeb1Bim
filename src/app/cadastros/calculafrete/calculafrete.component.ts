@@ -19,7 +19,7 @@ export class CalculafreteComponent implements OnInit {
   public estadoList: Array<Estado>;
   public valorFreteList: Array<ValorFrete>;
   public dsEstado: any;
-  public dsValorfrete: any;
+  public dsValorFrete: any;
 
   displayedColumnsEstado: string[] = ['actionsColumn', 'id', 'sigla', 'nome'];
   displayedColumnsValorFrete: string[] = ['actionsColumn', 'id', 'estadoOrigem', 'estadoDestino', 'valor'];
@@ -46,22 +46,29 @@ export class CalculafreteComponent implements OnInit {
     this.isExpandidoValorFrete = 1;
   }
 
-  salvarEstado(){
+  salvarEstado() {
     // console.log("Estado Salvo")
     // console.log(this.estado);
     this.estadoList.push(this.estado);
     console.log("Lista de Estados");
     console.log(this.estadoList);
-    this.estado = new Estado(); //Instancia uma novo Estado para não perder a referência da primeira0,
+    this.estado = new Estado();
 
     this.atualizaTableEstado();   
   }
 
-  salvarValorFrete(){
-    
+  salvarValorFrete() {
+    // console.log("Estado Salvo")
+    // console.log(this.estado);
+    this.valorFreteList.push(this.valorFrete);
+    console.log("Lista de Valor Frete");
+    console.log(this.valorFreteList);
+    this.valorFrete = new ValorFrete();
+
+    this.atualizaTableValorFrete();
   }
 
-  carregaEstado(){
+  carregaEstado() {
     //this.estado = new Estado;
     //this.estado.id = Math.floor(Math.random() * 100) + 1;
     //this.estado.nome = "Jooj";
@@ -70,15 +77,15 @@ export class CalculafreteComponent implements OnInit {
     //this.dsEstado = new MatTableDataSource<Estado>(this.estadoList);
   }
 
-  sortDataEstado(){
+  sortDataEstado() {
     this.dsEstado.sort = this.sort;
   }
 
-  sortDataValorFrete(){
-    this.dsValorfrete.sort = this.sort;
+  sortDataValorFrete() {
+    this.dsValorFrete.sort = this.sort;
   }
 
-  aplicarFiltroEstado(valor: string){
+  aplicarFiltroEstado(valor: string) {
     valor = valor.trim();
     valor = valor.toLowerCase();
     console.log("Realiza o filtro com " + valor);
@@ -91,7 +98,16 @@ export class CalculafreteComponent implements OnInit {
   }
 
   aplicarFiltroValorFrete(valor: string) {
-
+    valor = valor.trim();
+    valor = valor.toLowerCase();
+    console.log("Realiza o filtro com " + valor);
+    this.dsValorFrete.filterPredicate = (data: ValorFrete, filter: string ) => 
+      data.id.toString().indexOf(filter) != -1 ||
+      data.estadoOrigem.toString().toLowerCase().indexOf(filter) != -1 ||
+      data.estadoDestino.toString().toLowerCase().indexOf(filter) != -1 ||
+      data.valor.toString().indexOf(filter) != -1;
+  
+    this.dsValorFrete.filter = valor;
   }
 
   editarEstado(id: number) {
@@ -117,8 +133,12 @@ export class CalculafreteComponent implements OnInit {
     this.atualizaTableEstado();
   }
 
-  excluirValorFrete() {
-
+  excluirValorFrete(id: number) {
+    this.valorFreteList.splice(this.valorFreteList.findIndex
+      (d => d.id === id), 1);
+    console.log("Lista de Valor Frete");
+    console.log(this.valorFreteList);
+    this.atualizaTableValorFrete();
   }
 
   atualizaTableEstado() {
@@ -128,13 +148,17 @@ export class CalculafreteComponent implements OnInit {
   }
 
   atualizaTableValorFrete() {
-    this.dsValorfrete = new MatTableDataSource<ValorFrete>(this.valorFreteList);
-    this.dsValorfrete.paginator = this.paginator;
-    this.dsValorfrete.sort = this.sort;
+    this.dsValorFrete = new MatTableDataSource<ValorFrete>(this.valorFreteList);
+    this.dsValorFrete.paginator = this.paginator;
+    this.dsValorFrete.sort = this.sort;
   }
 
   atualizarEstadoOrigem() {
 
+  }
+
+  atualizarEstadoDestino() {
+    
   }
 
 }
