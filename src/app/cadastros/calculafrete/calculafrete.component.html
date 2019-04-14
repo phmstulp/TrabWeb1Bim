@@ -144,8 +144,9 @@
           
           <div class="col s6 m4 l4">
             <div class="button-row col s12">               
-              <button mat-fab color="warn" (click)="removeCep()">-</button>
-              <button mat-fab color="green" (click)="addCep()">+</button>
+              <!--<button mat-fab color="warn" (click)="removeCep()">-</button >-->
+              <button mat-fab color="green"  *ngIf="!edicaoCep" (click)="addCep()">+</button>
+              <button mat-fab color="green"  *ngIf="edicaoCep" (click)="atualizarCep()">Atualizar</button> 
             </div>
           </div>            
         </div>        

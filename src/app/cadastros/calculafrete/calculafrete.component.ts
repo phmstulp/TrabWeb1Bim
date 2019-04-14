@@ -30,6 +30,9 @@ export class CalculafreteComponent implements OnInit {
   public dsCidade: any;
   public dsCep: any;
 
+  public edicaoCep: boolean;
+  public idCep: number;
+
   displayedColumnsEstado: string[] = ['actionsColumn', 'id', 'sigla', 'nome'];
   displayedColumnsValorFrete: string[] = ['actionsColumn', 'id', 'estadoOrigem', 'estadoDestino', 'valor'];
   displayedColumnsCidade: string[] = ['actionsColumn', 'id', 'nome'];
@@ -51,7 +54,9 @@ export class CalculafreteComponent implements OnInit {
     this.isExpandidoEstado = 0;
     this.isExpandidoValorFrete = 0;
     this.isExpandidoCidade = 0;
+    this.idCep = 0;
     //this.carregaEstado();
+    this.edicaoCep = false;
   }
 
   setExpandidoEstado() {
@@ -157,6 +162,24 @@ export class CalculafreteComponent implements OnInit {
     this.estado = estadoUpdate;
   }
 
+  editarCep(id: number) {
+    this.edicaoCep = true;    
+    let cepUpdate;
+    this.cepList.forEach(item => {
+      if (item.id == id) {
+        cepUpdate = item;
+      }
+    });  
+    this.cep = cepUpdate;
+  }  
+
+  atualizarCep() {
+    this.excluirCep(this.cep.id);
+    this.cepList.push(this.cep);
+    this.cep = new Cep(); 
+    this.edicaoCep = false;      
+  }
+
   editarValorFrete(id: number) {
 
   }
@@ -176,6 +199,12 @@ export class CalculafreteComponent implements OnInit {
     console.log(this.valorFreteList);
     this.atualizaTableValorFrete();
   }
+
+  excluirCep(id: number) {
+    this.cepList.splice(this.valorFreteList.findIndex
+      (d => d.id === id), 1);
+    this.atualizaTableCep();
+  }  
 
   atualizaTableEstado() {
     this.dsEstado = new MatTableDataSource<Estado>(this.estadoList);
@@ -203,9 +232,11 @@ export class CalculafreteComponent implements OnInit {
   }
 
   addCep(){
+    this.cep.id = this.idCep;
     this.cepList.push(this.cep);
     this.cep = new Cep();
-    this.atualizaTableCep();    
+    this.idCep = this.idCep + 1; 
+    this.atualizaTableCep();  
   }
 
   atualizaTableCep() {
