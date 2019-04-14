@@ -114,7 +114,7 @@
 
           <div class="col s12 m6 l6">
             <mat-form-field>
-                <mat-select placeholder="Estado" name="estadoCidade" [(ngModel)]="cidade.estado" (selectionChange)="atualizarEstadoOrigem()" >
+                <mat-select placeholder="Estado" name="estadoCidade" [(ngModel)]="cidade.estado">
                     <mat-option *ngFor="let t of estadoList" [value]="t.nome">
                         {{t.nome}}
                     </mat-option>
