@@ -61,14 +61,11 @@ export class CalculafreteComponent implements OnInit {
     this.isExpandidoEstado = 0;
     this.isExpandidoValorFrete = 0;
     this.isExpandidoCidade = 0;
-<<<<<<< HEAD
     this.idCep = 0;
     //this.carregaEstado();
     this.edicaoCep = false;
-=======
     this.estadoO = new Estado();
     this.estadoD = new Estado();
->>>>>>> ebb27fdbd659c311df7c5f497ffdfac751605abf
   }
 
   setExpandidoEstado() {
