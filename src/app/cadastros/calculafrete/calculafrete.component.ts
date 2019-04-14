@@ -21,6 +21,7 @@ export class CalculafreteComponent implements OnInit {
   public isExpandidoEstado: number;
   public isExpandidoValorFrete: number;
   public isExpandidoCidade: number;
+  public isExpandidoCalculaFrete: number;
   public estadoList: Array<Estado>;
   public valorFreteList: Array<ValorFrete>;
   public cidadeList: Array<Cidade>;
@@ -31,6 +32,10 @@ export class CalculafreteComponent implements OnInit {
   public edicaoEstado: boolean = false;
   public edicaoValorFrete: boolean = false;
   public dsCep: any;
+  public peso: number;
+  public estadoO: Estado;
+  public estadoD: Estado;
+  public resultadoValorFrete: number;
 
   displayedColumnsEstado: string[] = ['actionsColumn', 'id', 'sigla', 'nome'];
   displayedColumnsValorFrete: string[] = ['actionsColumn', 'id', 'estadoOrigem', 'estadoDestino', 'valor'];
@@ -53,7 +58,8 @@ export class CalculafreteComponent implements OnInit {
     this.isExpandidoEstado = 0;
     this.isExpandidoValorFrete = 0;
     this.isExpandidoCidade = 0;
-    //this.carregaEstado();
+    this.estadoO = new Estado();
+    this.estadoD = new Estado();
   }
 
   setExpandidoEstado() {
@@ -68,10 +74,14 @@ export class CalculafreteComponent implements OnInit {
     this.isExpandidoCidade = 1;
   }
 
+  setExpandidoCalculaFrete() {
+    this.isExpandidoCalculaFrete = 1;
+  }
+
   salvarEstado() {
     if (this.edicaoEstado == false) {
-      // console.log("Estado Salvo")
-      // console.log(this.estado);
+      console.log("Estado Salvo")
+      console.log(this.estado);
       this.estadoList.push(this.estado);
       console.log("Lista de Estados");
       console.log(this.estadoList);
@@ -96,8 +106,8 @@ export class CalculafreteComponent implements OnInit {
 
   salvarValorFrete() {
     if (this.edicaoValorFrete == false) {
-      // console.log("Estado Salvo")
-      // console.log(this.estado);
+      console.log("Estado Salvo")
+      console.log(this.estado);
       this.valorFreteList.push(this.valorFrete);
       console.log("Lista de Valor Frete");
       console.log(this.valorFreteList);
@@ -110,15 +120,6 @@ export class CalculafreteComponent implements OnInit {
     }
 
     this.atualizaTableValorFrete();
-  }
-
-  carregaEstado() {
-    this.estado = new Estado;
-    this.estado.id = Math.floor(Math.random() * 100) + 1;
-    this.estado.nome = "Jooj";
-    this.estado.sigla = "JS";
-    this.estadoList.push(this.estado);
-    this.dsEstado = new MatTableDataSource<Estado>(this.estadoList);
   }
 
   sortDataEstado() {
@@ -163,7 +164,6 @@ export class CalculafreteComponent implements OnInit {
   }
 
   editarEstado(id: number) {
-    //alert("Editar ==> " + id);
     let estadoUpdate;
     this.estadoList.forEach(item => {
       if (item.id == id) {
@@ -175,7 +175,6 @@ export class CalculafreteComponent implements OnInit {
   }
 
   editarValorFrete(id: number) {
-    //alert("Editar ==> " + id);
     let valorFreteUpdate;
     this.valorFreteList.forEach(item => {
       if (item.id == id) {
@@ -219,13 +218,6 @@ export class CalculafreteComponent implements OnInit {
     this.dsCidade.paginator = this.paginator;
     this.dsCidade.sort = this.sort;
   }  
-  atualizarEstadoOrigem() {
-
-  }
-
-  atualizarEstadoDestino() {
-
-  }
 
   addCep(){
     this.cepList.push(this.cep);
@@ -238,5 +230,16 @@ export class CalculafreteComponent implements OnInit {
     this.dsCep.paginator = this.paginator;
     this.dsCep.sort = this.sort;
   }  
+
+  calculaFrete() {
+    let resultado;
+    this.valorFreteList.forEach(item => {
+      if ((item.estadoOrigem == this.estadoO) 
+          && (item.estadoDestino == this.estadoD)) {
+          resultado = this.peso * item.valor;
+      }
+    });
+    this.resultadoValorFrete = resultado;
+  }
 
 }
