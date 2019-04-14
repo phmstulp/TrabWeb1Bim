@@ -30,9 +30,7 @@
 
         <div class="row footer-btn">
           <div class="button-row col s12">
-            <button mat-raised-button (click)="voltar()">Voltar</button>
             <button mat-raised-button color="green" (click)="salvarEstado()">Salvar</button>
-            <!--<button *ngIf="edicao" mat-raised-button color="green" (click)="atualizar()">Atualizar</button>-->
           </div>
         </div>
 
@@ -54,8 +52,6 @@
         <div class="row">
           <div class="col s12 m12 l12">
             <mat-table [dataSource]="dsEstado" matSort (matSortChange)="sortDataEstado($event)" class="mat-elevation-z8">
-              <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
 
               <ng-container matColumnDef="actionsColumn">
                 <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
@@ -149,23 +145,8 @@
               <button mat-fab color="green"  *ngIf="edicaoCep" (click)="atualizarCep()">Atualizar</button> 
             </div>
           </div>            
-        </div>        
+        </div>  
 
-        <div class="row heading">
-          <div class="col s12">
-            <h2 class="title">Lista de CEP's</h2>
-            <div class="heading__tools">
-              <div class="search">
-                <mat-form-field>
-                  <mat-icon svgIcon="slidenav-search"></mat-icon>
-                  <input matInput id="pesquisarCep" name="pesquisar" placeholder="Pesquisar"
-                    (keyup)="aplicarFiltroCep($event.target.value)">
-                </mat-form-field>
-              </div>
-            </div>
-          </div>
-        </div>     
-        
         <div class="row">
           <div class="col s12 m6 l6">
             <mat-table [dataSource]="dsCep" matSort (matSortChange)="sortDataCep($event)" class="mat-elevation-z8">
@@ -204,7 +185,6 @@
 
         <div class="row footer-btn">
           <div class="button-row col s12">
-            <button mat-raised-button (click)="voltar()">Voltar</button>
             <button mat-raised-button color="green" (click)="salvarCidade()">Salvar</button>
           </div>
         </div>
@@ -266,14 +246,12 @@
 
 </div>
 
-<!-- ============ CADASTRO DE VALOR FRETE ============-->
 <div class="row">
   <div class="col s12">
     <mat-accordion>
       <mat-expansion-panel name="panelValorFrete" [expanded]="isExpandidoValorFrete === 1" (opened)="setExpandidoValorFrete()">
         <mat-expansion-panel-header>
           <mat-panel-title>Cadastros de Valor Frete</mat-panel-title>
-          <!--<mat-panel-description>Estado</mat-panel-description>-->
         </mat-expansion-panel-header>
 
         <div class="row">
@@ -286,7 +264,7 @@
 
         <div class="col s12 m12 l12">
           <mat-form-field>
-              <mat-select placeholder="Estado Origem" name="estadoOrigem" [(ngModel)]="valorFrete.estadoOrigem" (selectionChange)="atualizarEstadoOrigem()" >
+              <mat-select placeholder="Estado Origem" name="estadoOrigem" [(ngModel)]="valorFrete.estadoOrigem">
                   <mat-option *ngFor="let t of estadoList" [value]="t.nome">
                       {{t.nome}}
                   </mat-option>
@@ -296,7 +274,7 @@
 
         <div class="col s12 m12 l12">
           <mat-form-field>
-              <mat-select placeholder="Estado Destino" name="estadoDestino" [(ngModel)]="valorFrete.estadoDestino" (selectionChange)="atualizarEstadoDestino()" >
+              <mat-select placeholder="Estado Destino" name="estadoDestino" [(ngModel)]="valorFrete.estadoDestino">
                   <mat-option *ngFor="let t of estadoList" [value]="t.nome">
                       {{t.nome}}
                   </mat-option>
@@ -314,9 +292,7 @@
 
         <div class="row footer-btn">
           <div class="button-row col s12">
-            <button mat-raised-button (click)="voltar()">Voltar</button>
             <button mat-raised-button color="green" (click)="salvarValorFrete()">Salvar</button>
-            <!--<button *ngIf="edicao" mat-raised-button color="green" (click)="atualizar()">Atualizar</button>-->
           </div>
         </div>
 
@@ -338,8 +314,6 @@
         <div class="row">
           <div class="col s12 m12 l12">
             <mat-table [dataSource]="dsValorFrete" matSort (matSortChange)="sortDataValorFrete($event)" class="mat-elevation-z8">
-              <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
 
               <ng-container matColumnDef="actionsColumn">
                 <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
@@ -389,3 +363,61 @@
   </div>
 </div>
 
+
+
+
+
+<div class="row">
+  <div class="col s12">
+    <mat-accordion>
+      <mat-expansion-panel name="panelCalculaFrete" [expanded]="isExpandidocalculaFrete === 1" (opened)="setExpandidoCalculaFrete()">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Calcular Valor do Frete</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="col s12 m12 l12">
+          <mat-form-field>
+              <mat-select placeholder="Estado Origem" name="estadoOrigem" [(ngModel)]="estadoO">
+                  <mat-option *ngFor="let t of estadoList" [value]="t.nome">
+                      {{t.nome}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+        </div> 
+
+        <div class="col s12 m12 l12">
+          <mat-form-field>
+              <mat-select placeholder="Estado Destino" name="estadoDestino" [(ngModel)]="estadoD">
+                  <mat-option *ngFor="let t of estadoList" [value]="t.nome">
+                      {{t.nome}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+        </div> 
+
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <mat-form-field>
+              <input matInput placeholder="Peso" type="number" [(ngModel)]="peso" required>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row footer-btn">
+          <div class="button-row col s12">
+            <button mat-raised-button color="green" (click)="calculaFrete()">Calcular Valor Frete</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <mat-form-field>
+              <input matInput placeholder="Resultado Valor Frete" type="number" [(ngModel)]="resultadoValorFrete" disabled>
+            </mat-form-field>
+          </div>
+        </div>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
