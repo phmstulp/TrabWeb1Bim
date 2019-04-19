@@ -164,11 +164,19 @@ export class CalculafreteComponent implements OnInit {
   }
 
   aplicarFiltroCidade(valor: string) {
+    valor = valor.trim();
+    valor = valor.toLowerCase();
+    console.log("Realiza o filtro com " + valor);
+    this.dsCidade.filterPredicate = (data: Cidade, filter: string) =>
+      data.id.toString().indexOf(filter) != -1 ||
+      data.nome.toLowerCase().indexOf(filter) != -1 ||
+      data.estado.toString().toLowerCase().indexOf(filter) != -1;
 
+    this.dsCidade.filter = valor;
   }
 
   sortDataCidade() {
-
+    this.dsCidade.sort = this.sort;
   }
 
   editarEstado(id: number) {
