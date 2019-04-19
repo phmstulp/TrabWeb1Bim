@@ -38,6 +38,7 @@ export class CalculafreteComponent implements OnInit {
   public resultadoValorFrete: number;
 
   public edicaoCep: boolean;
+  public edicaoCidade : boolean;
   public idCep: number;
 
   displayedColumnsEstado: string[] = ['actionsColumn', 'id', 'sigla', 'nome'];
@@ -64,8 +65,9 @@ export class CalculafreteComponent implements OnInit {
     this.idCep = 0;
     //this.carregaEstado();
     this.edicaoCep = false;
-    this.estadoO = new Estado();
-    this.estadoD = new Estado();
+    this.estadoO = new Estado(); //Estado ORGIEM
+    this.estadoD = new Estado(); //Estado DESTINO
+    this.edicaoCidade = false;
   }
 
   setExpandidoEstado() {
@@ -104,11 +106,17 @@ export class CalculafreteComponent implements OnInit {
   }
 
   salvarCidade() {
-    this.cidade.cepList = this.cepList;
-    this.cidadeList.push(this.cidade);
+    if (this.edicaoCidade == false) {
+      this.cidade.cepList = this.cepList;
+      this.cidadeList.push(this.cidade);
+    } else {
+      this.cidadeList.splice(this.cidadeList.findIndex
+        (d => d.id === this.cidade.id), 1);
+      this.cidadeList.push(this.cidade);
+      this.edicaoCidade = false;
+    }
     this.cidade = new Cidade();
     this.cepList = new Array<Cep>();
-    
     this.atualizaTableCep();
     this.atualizaTableCidade();   
   }  
@@ -130,55 +138,6 @@ export class CalculafreteComponent implements OnInit {
     }
 
     this.atualizaTableValorFrete();
-  }
-
-  sortDataEstado() {
-    this.dsEstado.sort = this.sort;
-  }
-
-  sortDataValorFrete() {
-    this.dsValorFrete.sort = this.sort;
-  }
-
-  aplicarFiltroEstado(valor: string) {
-    valor = valor.trim();
-    valor = valor.toLowerCase();
-    console.log("Realiza o filtro com " + valor);
-    this.dsEstado.filterPredicate = (data: Estado, filter: string) =>
-      data.id.toString().indexOf(filter) != -1 ||
-      data.sigla.toLowerCase().indexOf(filter) != -1 ||
-      data.nome.toLowerCase().indexOf(filter) != -1;
-
-    this.dsEstado.filter = valor;
-  }
-
-  aplicarFiltroValorFrete(valor: string) {
-    valor = valor.trim();
-    valor = valor.toLowerCase();
-    console.log("Realiza o filtro com " + valor);
-    this.dsValorFrete.filterPredicate = (data: ValorFrete, filter: string) =>
-      data.id.toString().indexOf(filter) != -1 ||
-      data.estadoOrigem.toString().toLowerCase().indexOf(filter) != -1 ||
-      data.estadoDestino.toString().toLowerCase().indexOf(filter) != -1 ||
-      data.valor.toString().indexOf(filter) != -1;
-
-    this.dsValorFrete.filter = valor;
-  }
-
-  aplicarFiltroCidade(valor: string) {
-    valor = valor.trim();
-    valor = valor.toLowerCase();
-    console.log("Realiza o filtro com " + valor);
-    this.dsCidade.filterPredicate = (data: Cidade, filter: string) =>
-      data.id.toString().indexOf(filter) != -1 ||
-      data.nome.toLowerCase().indexOf(filter) != -1 ||
-      data.estado.toString().toLowerCase().indexOf(filter) != -1;
-
-    this.dsCidade.filter = valor;
-  }
-
-  sortDataCidade() {
-    this.dsCidade.sort = this.sort;
   }
 
   editarEstado(id: number) {
@@ -226,8 +185,9 @@ export class CalculafreteComponent implements OnInit {
     this.cidade = cidadeUpdate;
     this.cepList = cidadeUpdate.cepList;
     this.dsCep = cidadeUpdate.cepList;
-    this.atualizaTableCep;
-  }
+    this.atualizaTableCep();
+    this.edicaoCidade = true;
+  }  
 
   excluirEstado(id: number) {
     this.estadoList.splice(this.estadoList.findIndex
@@ -257,6 +217,55 @@ export class CalculafreteComponent implements OnInit {
     this.cepList.splice(this.cepList.findIndex
       (d => d.id === id), 1);
     this.atualizaTableCep();
+  }    
+
+  aplicarFiltroEstado(valor: string) {
+    valor = valor.trim();
+    valor = valor.toLowerCase();
+    console.log("Realiza o filtro com " + valor);
+    this.dsEstado.filterPredicate = (data: Estado, filter: string) =>
+      data.id.toString().indexOf(filter) != -1 ||
+      data.sigla.toLowerCase().indexOf(filter) != -1 ||
+      data.nome.toLowerCase().indexOf(filter) != -1;
+
+    this.dsEstado.filter = valor;
+  }
+
+  aplicarFiltroValorFrete(valor: string) {
+    valor = valor.trim();
+    valor = valor.toLowerCase();
+    console.log("Realiza o filtro com " + valor);
+    this.dsValorFrete.filterPredicate = (data: ValorFrete, filter: string) =>
+      data.id.toString().indexOf(filter) != -1 ||
+      data.estadoOrigem.toString().toLowerCase().indexOf(filter) != -1 ||
+      data.estadoDestino.toString().toLowerCase().indexOf(filter) != -1 ||
+      data.valor.toString().indexOf(filter) != -1;
+
+    this.dsValorFrete.filter = valor;
+  }
+
+  aplicarFiltroCidade(valor: string) {
+    valor = valor.trim();
+    valor = valor.toLowerCase();
+    console.log("Realiza o filtro com " + valor);
+    this.dsCidade.filterPredicate = (data: Cidade, filter: string) =>
+      data.id.toString().indexOf(filter) != -1 ||
+      data.nome.toLowerCase().indexOf(filter) != -1 ||
+      data.estado.toString().toLowerCase().indexOf(filter) != -1;
+
+    this.dsCidade.filter = valor;
+  }
+
+  sortDataCidade() {
+    this.dsCidade.sort = this.sort;
+  }
+
+  sortDataEstado() {
+    this.dsEstado.sort = this.sort;
+  }
+
+  sortDataValorFrete() {
+    this.dsValorFrete.sort = this.sort;
   }  
 
   atualizaTableEstado() {
@@ -277,13 +286,18 @@ export class CalculafreteComponent implements OnInit {
     this.dsCidade.sort = this.sort;
   }  
 
+  atualizaTableCep() {
+    this.dsCep = new MatTableDataSource<Cep>(this.cepList);
+    this.dsCep.paginator = this.paginator;
+    this.dsCep.sort = this.sort;
+  }    
+
   addCep(){
     if (this.edicaoCep == false) {
       console.log("CEP Salvo")
       console.log(this.cep);
       this.cep.id = this.idCep;
       this.cepList.push(this.cep);
-      this.cep = new Cep();
       this.idCep = this.idCep + 1;       
     } else {
       console.log(this.cep);
@@ -293,25 +307,9 @@ export class CalculafreteComponent implements OnInit {
       //this.cep = new Cep(); 
       this.edicaoCep = false;      
     }
-
-    // if (this.edicaoValorFrete == false) {
-    //   this.valorFreteList.push(this.valorFrete);
-    //   this.valorFrete = new ValorFrete();
-    // } else {
-    //   this.valorFreteList.splice(this.valorFreteList.findIndex
-    //     (d => d.id === this.valorFrete.id), 1);
-    //   this.valorFreteList.push(this.valorFrete);
-    //   this.edicaoValorFrete = false;
-    // }    
-
+    this.cep = new Cep();    
     this.atualizaTableCep();  
   }
-
-  atualizaTableCep() {
-    this.dsCep = new MatTableDataSource<Cep>(this.cepList);
-    this.dsCep.paginator = this.paginator;
-    this.dsCep.sort = this.sort;
-  }  
 
   calculaFrete() {
     let resultado;
