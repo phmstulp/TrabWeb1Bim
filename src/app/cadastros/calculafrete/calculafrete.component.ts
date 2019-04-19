@@ -189,6 +189,8 @@ export class CalculafreteComponent implements OnInit {
       }
     });  
     this.cep = cepUpdate;
+    console.log("Editar - " + this.cep);
+    console.log(this.edicaoCep);
   }  
 
   editarValorFrete(id: number) {
@@ -200,6 +202,18 @@ export class CalculafreteComponent implements OnInit {
     });
     this.valorFrete = valorFreteUpdate;
     this.edicaoValorFrete = true;
+  }
+
+  editarCidade(id: number) {
+    let cidadeUpdate;
+    this.cidadeList.forEach(item => {
+      if (item.id == id) {
+        cidadeUpdate = item;
+      }
+    })
+    this.cidade = cidadeUpdate;
+    this.dsCep = cidadeUpdate.cepList;
+    this.atualizaTableCep;
   }
 
   excluirEstado(id: number) {
@@ -243,30 +257,18 @@ export class CalculafreteComponent implements OnInit {
   }  
 
   addCep(){
-    if (this.edicaoCep == false) {
+    if (this.edicaoCep === false) {
       this.cep.id = this.idCep;
       this.cepList.push(this.cep);
       this.cep = new Cep();
       this.idCep = this.idCep + 1;       
     } else {
-      console.log(this.cep);
-      this.cepList.splice(this.valorFreteList.findIndex
+      this.cepList.splice(this.cepList.findIndex
         (d => d.id === this.cep.id), 1);
       this.cepList.push(this.cep);
-      //this.cep = new Cep(); 
       this.edicaoCep = false;      
     }
-
-    // if (this.edicaoValorFrete == false) {
-    //   this.valorFreteList.push(this.valorFrete);
-    //   this.valorFrete = new ValorFrete();
-    // } else {
-    //   this.valorFreteList.splice(this.valorFreteList.findIndex
-    //     (d => d.id === this.valorFrete.id), 1);
-    //   this.valorFreteList.push(this.valorFrete);
-    //   this.edicaoValorFrete = false;
-    // }    
-
+ 
     this.atualizaTableCep();  
   }
 
