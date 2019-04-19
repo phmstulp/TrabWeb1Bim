@@ -38,6 +38,7 @@ export class CalculafreteComponent implements OnInit {
   public resultadoValorFrete: number;
 
   public edicaoCep: boolean;
+  public edicaoCidade : boolean;
   public idCep: number;
 
   displayedColumnsEstado: string[] = ['actionsColumn', 'id', 'sigla', 'nome'];
@@ -64,8 +65,9 @@ export class CalculafreteComponent implements OnInit {
     this.idCep = 0;
     //this.carregaEstado();
     this.edicaoCep = false;
-    this.estadoO = new Estado();
-    this.estadoD = new Estado();
+    this.estadoO = new Estado(); //Estado ORGIEM
+    this.estadoD = new Estado(); //Estado DESTINO
+    this.edicaoCidade = false;
   }
 
   setExpandidoEstado() {
@@ -103,11 +105,17 @@ export class CalculafreteComponent implements OnInit {
   }
 
   salvarCidade() {
-    this.cidade.cepList = this.cepList;
-    this.cidadeList.push(this.cidade);
+    if (this.edicaoCidade == false) {
+      this.cidade.cepList = this.cepList;
+      this.cidadeList.push(this.cidade);
+    } else {
+      this.cidadeList.splice(this.cidadeList.findIndex
+        (d => d.id === this.cidade.id), 1);
+      this.cidadeList.push(this.cidade);
+      this.edicaoCidade = false;
+    }
     this.cidade = new Cidade();
     this.cepList = new Array<Cep>();
-    
     this.atualizaTableCep();
     this.atualizaTableCidade();   
   }  
@@ -224,7 +232,8 @@ export class CalculafreteComponent implements OnInit {
     this.cidade = cidadeUpdate;
     this.cepList = cidadeUpdate.cepList;
     this.dsCep = cidadeUpdate.cepList;
-    this.atualizaTableCep;
+    this.atualizaTableCep();
+    this.edicaoCidade = true;
   }
 
   excluirEstado(id: number) {
@@ -273,7 +282,6 @@ export class CalculafreteComponent implements OnInit {
       console.log(this.cep);
       this.cep.id = this.idCep;
       this.cepList.push(this.cep);
-      this.cep = new Cep();
       this.idCep = this.idCep + 1;       
     } else {
       this.cepList.splice(this.cepList.findIndex
@@ -281,8 +289,12 @@ export class CalculafreteComponent implements OnInit {
       this.cepList.push(this.cep);
       this.edicaoCep = false;      
     }
- 
+    this.cep = new Cep();    
     this.atualizaTableCep();  
+  }
+
+  limpaCampoCEP() {
+    
   }
 
   atualizaTableCep() {
