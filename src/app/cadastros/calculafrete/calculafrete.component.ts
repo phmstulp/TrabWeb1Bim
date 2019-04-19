@@ -99,6 +99,7 @@ export class CalculafreteComponent implements OnInit {
         (d => d.id === this.estado.id), 1);
       this.estadoList.push(this.estado);
       this.edicaoEstado = false;
+      this.estado = new Estado();
     }
   }
 
@@ -125,6 +126,7 @@ export class CalculafreteComponent implements OnInit {
         (d => d.id === this.valorFrete.id), 1);
       this.valorFreteList.push(this.valorFrete);
       this.edicaoValorFrete = false;
+      this.valorFrete = new ValorFrete();
     }
 
     this.atualizaTableValorFrete();
@@ -276,12 +278,24 @@ export class CalculafreteComponent implements OnInit {
       this.cep = new Cep();
       this.idCep = this.idCep + 1;       
     } else {
+      console.log(this.cep);
       this.cepList.splice(this.cepList.findIndex
         (d => d.id === this.cep.id), 1);
       this.cepList.push(this.cep);
+      //this.cep = new Cep(); 
       this.edicaoCep = false;      
     }
- 
+
+    // if (this.edicaoValorFrete == false) {
+    //   this.valorFreteList.push(this.valorFrete);
+    //   this.valorFrete = new ValorFrete();
+    // } else {
+    //   this.valorFreteList.splice(this.valorFreteList.findIndex
+    //     (d => d.id === this.valorFrete.id), 1);
+    //   this.valorFreteList.push(this.valorFrete);
+    //   this.edicaoValorFrete = false;
+    // }    
+
     this.atualizaTableCep();  
   }
 
