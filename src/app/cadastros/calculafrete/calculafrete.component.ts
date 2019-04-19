@@ -106,7 +106,9 @@ export class CalculafreteComponent implements OnInit {
     this.cidade.cepList = this.cepList;
     this.cidadeList.push(this.cidade);
     this.cidade = new Cidade();
+    this.cepList = new Array<Cep>();
     
+    this.atualizaTableCep();
     this.atualizaTableCidade();   
   }  
 
@@ -219,7 +221,7 @@ export class CalculafreteComponent implements OnInit {
   }
 
   excluirCep(id: number) {
-    this.cepList.splice(this.valorFreteList.findIndex
+    this.cepList.splice(this.cepList.findIndex
       (d => d.id === id), 1);
     this.atualizaTableCep();
   }  
@@ -244,13 +246,15 @@ export class CalculafreteComponent implements OnInit {
 
   addCep(){
     if (this.edicaoCep == false) {
+      console.log("CEP Salvo")
+      console.log(this.cep);
       this.cep.id = this.idCep;
       this.cepList.push(this.cep);
       this.cep = new Cep();
       this.idCep = this.idCep + 1;       
     } else {
       console.log(this.cep);
-      this.cepList.splice(this.valorFreteList.findIndex
+      this.cepList.splice(this.cepList.findIndex
         (d => d.id === this.cep.id), 1);
       this.cepList.push(this.cep);
       //this.cep = new Cep(); 
