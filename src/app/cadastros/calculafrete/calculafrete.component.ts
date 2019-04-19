@@ -237,6 +237,14 @@ export class CalculafreteComponent implements OnInit {
     this.atualizaTableEstado();
   }
 
+  excluirCidade(id: number) {
+    this.cidadeList.splice(this.cidadeList.findIndex
+      (d => d.id === id), 1);
+    console.log("Lista de Cidade");
+    console.log(this.cidadeList);
+    this.atualizaTableCidade();
+  }
+
   excluirValorFrete(id: number) {
     this.valorFreteList.splice(this.valorFreteList.findIndex
       (d => d.id === id), 1);
